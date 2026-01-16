@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Educational Management System - User Manual | دليل المستخدم - نظام إدارة التعليم</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <style>
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --text-color: #121212;
+            --text-light: #64728f;
+            --bg-light: #f8f9fa;
+        }
+
+        body {
+            font-family: "Tajawal", "Montserrat", sans-serif;
+            background-color: #f4f6f9;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        body.ltr {
+            direction: ltr;
+            text-align: left;
+        }
+
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #fff;
+            padding: 80px 0 120px;
+            /* Extra padding at bottom for overlap */
+            text-align: center;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .header h1 {
+            font-weight: 900;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        .header .company-name {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Language Switcher - Integrated */
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        body.ltr .lang-switch {
+            left: auto;
+            right: 20px;
+        }
+
+        .lang-switch a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 700;
+            margin: 0 5px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+        }
+
+        .lang-switch a:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .lang-switch a.active {
+            background: #fff;
+            color: var(--secondary-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Floating Banner Container */
+        .banner-container {
+            margin-top: -80px;
+            /* Negative margin to overlap header */
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 10;
+            padding: 0 20px;
+        }
+
+        .banner-container img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.05);
+            /* Premium shadow */
+            background: #fff;
+        }
+
+        .toc {
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            margin: 30px 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .toc h3 {
+            color: var(--secondary-color);
+            font-weight: 800;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .toc h3:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 0;
+            width: 40px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        body.ltr .toc h3:after {
+            right: auto;
+            left: 0;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            columns: 2;
+        }
+
+        @media (max-width: 768px) {
+            .toc ul {
+                columns: 1;
+            }
+        }
+
+        .toc li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .toc a {
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s, padding-right 0.3s;
+            font-weight: 500;
+            display: block;
+        }
+
+        .toc a:hover {
+            color: var(--primary-color);
+            padding-right: 5px;
+            /* Subtle movement on hover */
+        }
+
+        body.ltr .toc a:hover {
+            padding-right: 0;
+            padding-left: 5px;
+        }
+
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid #eee;
+            background: #fff;
+            padding-left: 30px;
+            padding-right: 30px;
+            margin-bottom: 30px;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+        }
+
+        .section-title {
+            color: var(--secondary-color);
+            font-weight: 800;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title .number {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .section-desc {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .screenshot {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .screenshot img {
+            max-width: 100%;
+            border: 8px solid #f8f9fa;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .screenshot-caption {
+            margin-top: 15px;
+            color: #888;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .feature-list {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 1px solid #eee;
+        }
+
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: #4CAF50;
+            margin-left: 10px;
+            font-size: 0.9rem;
+        }
+
+        body.ltr .feature-list li:before {
+            margin-left: 0;
+            margin-right: 10px;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .footer {
+            background: #2d2d2d;
+            color: #fff;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .footer a {
+            color: var(--primary-color);
+        }
+
+        .en {
+            display: none;
+        }
+
+        .ar {
+            display: block;
+        }
+
+        body.ltr .en {
+            display: block;
+        }
+
+        body.ltr .ar {
+            display: none;
+        }
+
+        @media print {
+            .lang-switch {
+                display: none;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body class="rtl">
+
+    <!-- Language Switch -->
+    <div class="lang-switch">
+        <a href="#" onclick="switchLang('ar')" id="btn-ar" class="active">العربية</a>
+        <a href="#" onclick="switchLang('en')" id="btn-en">English</a>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <h1>
+                <span class="ar">دليل المستخدم - نظام إدارة التعليم</span>
+                <span class="en">User Manual - Educational Management System</span>
+            </h1>
+            <p>
+                <span class="ar">الدليل الشامل لاستخدام بوابة ولى الأمر</span>
+                <span class="en">Comprehensive Guide for Parent Portal Usage</span>
+            </p>
+            <div class="company-name">
+                <span class="ar">Digital Integrated Transformation Solutions (DigitsCode)</span>
+                <span class="en">Digital Integrated Transformation Solutions (DigitsCode)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Banner -->
+    <div class="container banner-container text-center">
+        <img src="banner.png" alt="Banner" />
+    </div>
+
+    <div class="container">
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3>
+                <i class="fa fa-list me-2"></i>
+                <span class="ar">جدول المحتويات</span>
+                <span class="en">Table of Contents</span>
+            </h3>
+            <ul>
+                <li><a href="#section1"><span class="ar">1. تسجيل الدخول</span><span class="en">1. Login</span></a></li>
+                <li><a href="#section2"><span class="ar">2. صفحة أبنائى</span><span class="en">2. My Children
+                            Page</span></a></li>
+                <li><a href="#section3"><span class="ar">3. البيانات الشخصية</span><span class="en">3. Personal
+                            Data</span></a></li>
+                <li><a href="#section4"><span class="ar">4. البيانات التعليمية</span><span class="en">4. Educational
+                            Data</span></a></li>
+                <li><a href="#section5"><span class="ar">5. المصروفات الدراسية</span><span class="en">5. School
+                            Fees</span></a></li>
+                <li><a href="#section6"><span class="ar">6. اشتراك الباص</span><span class="en">6. Bus
+                            Subscription</span></a></li>
+                <li><a href="#section7"><span class="ar">7. الأنشطة المدرسية</span><span class="en">7. School
+                            Activities</span></a></li>
+                <li><a href="#section8"><span class="ar">8. البيانات الطبية</span><span class="en">8. Medical
+                            Data</span></a></li>
+                <li><a href="#section9"><span class="ar">9. النتائج والتقييمات</span><span class="en">9. Results &
+                            Evaluations</span></a></li>
+                <li><a href="#section10"><span class="ar">10. جدول الحصص</span><span class="en">10. Class
+                            Schedule</span></a></li>
+                <li><a href="#section11"><span class="ar">11. الخطة الأسبوعية</span><span class="en">11. Weekly
+                            Plan</span></a></li>
+                <li><a href="#section12"><span class="ar">12. الحضور والغياب</span><span class="en">12.
+                            Attendance</span></a></li>
+                <li><a href="#section13"><span class="ar">13. الفواتير المالية</span><span class="en">13. Financial
+                            Invoices</span></a></li>
+                <li><a href="#section14"><span class="ar">14. استلامات الكتب</span><span class="en">14. Book
+                            Receipts</span></a></li>
+                <li><a href="#section15"><span class="ar">15. الشكاوى والمقترحات</span><span class="en">15.
+                            Complaints</span></a></li>
+                <li><a href="#section16"><span class="ar">16. استدعاء ولى الأمر</span><span class="en">16. Parent
+                            Summons</span></a></li>
+            </ul>
+        </div>
+
+        <!-- Section 1: Login -->
+        <div class="section" id="section1">
+            <div class="section-title">
+                <span class="number">1</span>
+                <span class="ar">تسجيل الدخول</span>
+                <span class="en">Login</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">قم بتسجيل الدخول إلى بوابة ولى الأمر باستخدام بيانات الاعتماد الخاصة بك.</span>
+                <span class="en">Log in to the parent portal using your credentials.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/01 تسجيل الدخول.png" alt="Login Screen" />
+                <p class="screenshot-caption">
+                    <span class="ar">شاشة تسجيل الدخول</span>
+                    <span class="en">Login Screen</span>
+                </p>
+            </div>
+            <ul class="feature-list">
+                <li><span class="ar">أدخل البريد الإلكتروني أو اسم المستخدم</span><span class="en">Enter your email or
+                        username</span></li>
+                <li><span class="ar">أدخل كلمة المرور</span><span class="en">Enter your password</span></li>
+                <li><span class="ar">انقر على زر "تسجيل الدخول"</span><span class="en">Click the "Login" button</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section 2: My Children -->
+        <div class="section" id="section2">
+            <div class="section-title">
+                <span class="number">2</span>
+                <span class="ar">صفحة أبنائى</span>
+                <span class="en">My Children Page</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">عرض جميع الأبناء المسجلين في المدرسة والوصول السريع لبياناتهم.</span>
+                <span class="en">View all children enrolled in the school and quick access to their information.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/02 صفحة أبنائى.png" alt="My Children Page" />
+                <p class="screenshot-caption">
+                    <span class="ar">صفحة أبنائى</span>
+                    <span class="en">My Children Page</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 3: Personal Data -->
+        <div class="section" id="section3">
+            <div class="section-title">
+                <span class="number">3</span>
+                <span class="ar">البيانات الشخصية للطالب</span>
+                <span class="en">Student Personal Data</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">عرض وتحديث البيانات الشخصية للطالب.</span>
+                <span class="en">View and update student personal information.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/03 بروفايل الطالب - البيانات الشخصية.png" alt="Personal Data" />
+                <p class="screenshot-caption">
+                    <span class="ar">بروفايل الطالب - البيانات الشخصية</span>
+                    <span class="en">Student Profile - Personal Data</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 4: Educational Data -->
+        <div class="section" id="section4">
+            <div class="section-title">
+                <span class="number">4</span>
+                <span class="ar">البيانات التعليمية</span>
+                <span class="en">Educational Data</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">معلومات الفصل الدراسي والمرحلة التعليمية.</span>
+                <span class="en">Class and educational stage information.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/04 بروفايل الطالب - البيانات التعليمية.png" alt="Educational Data" />
+                <p class="screenshot-caption">
+                    <span class="ar">بروفايل الطالب - البيانات التعليمية</span>
+                    <span class="en">Student Profile - Educational Data</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 5: School Fees -->
+        <div class="section" id="section5">
+            <div class="section-title">
+                <span class="number">5</span>
+                <span class="ar">المصروفات الدراسية</span>
+                <span class="en">School Fees</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">عرض تفاصيل المصروفات الدراسية والمدفوعات.</span>
+                <span class="en">View school fees details and payments.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/05 بروفايل الطالب - المصروفات الدراسية.png" alt="School Fees" />
+                <p class="screenshot-caption">
+                    <span class="ar">بروفايل الطالب - المصروفات الدراسية</span>
+                    <span class="en">Student Profile - School Fees</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 6: Bus Subscription -->
+        <div class="section" id="section6">
+            <div class="section-title">
+                <span class="number">6</span>
+                <span class="ar">اشتراك الباص وخط السير</span>
+                <span class="en">Bus Subscription & Route</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">تفاصيل اشتراك الباص المدرسي وخط السير.</span>
+                <span class="en">School bus subscription and route details.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/06 بروفايل الطالب - اشتراك الباص وخط السير.png" alt="Bus Subscription" />
+                <p class="screenshot-caption">
+                    <span class="ar">بروفايل الطالب - اشتراك الباص وخط السير</span>
+                    <span class="en">Student Profile - Bus Subscription & Route</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 7: School Activities -->
+        <div class="section" id="section7">
+            <div class="section-title">
+                <span class="number">7</span>
+                <span class="ar">اشتراك الأنشطة المدرسية</span>
+                <span class="en">School Activities Subscription</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">عرض الأنشطة المدرسية المشترك فيها الطالب.</span>
+                <span class="en">View student's subscribed school activities.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/07 بروفايل الطالب - اشتراك الأنشطة المدرسية.png" alt="School Activities" />
+                <p class="screenshot-caption">
+                    <span class="ar">بروفايل الطالب - اشتراك الأنشطة المدرسية</span>
+                    <span class="en">Student Profile - School Activities Subscription</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 8: Medical Data -->
+        <div class="section" id="section8">
+            <div class="section-title">
+                <span class="number">8</span>
+                <span class="ar">البيانات الطبية</span>
+                <span class="en">Medical Data</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">السجل الطبي للطالب والحالات الصحية.</span>
+                <span class="en">Student medical record and health conditions.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/08 بروفايل الطالب - البيانات الطبية.png" alt="Medical Data" />
+                <p class="screenshot-caption">
+                    <span class="ar">بروفايل الطالب - البيانات الطبية</span>
+                    <span class="en">Student Profile - Medical Data</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 9: Results & Evaluations -->
+        <div class="section" id="section9">
+            <div class="section-title">
+                <span class="number">9</span>
+                <span class="ar">النتائج والتقييمات</span>
+                <span class="en">Results & Evaluations</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">عرض نتائج الاختبارات والتقييمات الدورية.</span>
+                <span class="en">View exam results and periodic evaluations.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/09 النتائج والتقييمات.png" alt="Results" />
+                <p class="screenshot-caption">
+                    <span class="ar">النتائج والتقييمات</span>
+                    <span class="en">Results & Evaluations</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 10: Class Schedule -->
+        <div class="section" id="section10">
+            <div class="section-title">
+                <span class="number">10</span>
+                <span class="ar">جدول الحصص</span>
+                <span class="en">Class Schedule</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">الجدول الدراسي اليومي للطالب.</span>
+                <span class="en">Student's daily class schedule.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/10 جدول الحصص.png" alt="Class Schedule" />
+                <p class="screenshot-caption">
+                    <span class="ar">جدول الحصص</span>
+                    <span class="en">Class Schedule</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 11: Weekly Plan -->
+        <div class="section" id="section11">
+            <div class="section-title">
+                <span class="number">11</span>
+                <span class="ar">الخطة الأسبوعية</span>
+                <span class="en">Weekly Plan</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">خطة الدراسة الأسبوعية والواجبات.</span>
+                <span class="en">Weekly study plan and assignments.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/11 الخطة الأسبوعية.png" alt="Weekly Plan" />
+                <p class="screenshot-caption">
+                    <span class="ar">الخطة الأسبوعية</span>
+                    <span class="en">Weekly Plan</span>
+                </p>
+            </div>
+            <div class="screenshot">
+                <img src="screenshot/12 إمكانية اختيار الأسبوع - الخطة الأسبوعية.png" alt="Week Selection" />
+                <p class="screenshot-caption">
+                    <span class="ar">إمكانية اختيار الأسبوع</span>
+                    <span class="en">Week Selection Option</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 12: Attendance -->
+        <div class="section" id="section12">
+            <div class="section-title">
+                <span class="number">12</span>
+                <span class="ar">الحضور والغياب</span>
+                <span class="en">Attendance</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">متابعة سجل الحضور والغياب وأذون الانصراف المبكر.</span>
+                <span class="en">Track attendance records and early leave permissions.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/13 الحضور والغياب وأذون الإنصراف المبكر.png" alt="Attendance" />
+                <p class="screenshot-caption">
+                    <span class="ar">الحضور والغياب وأذون الإنصراف المبكر</span>
+                    <span class="en">Attendance and Early Leave Permissions</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 13: Financial Invoices -->
+        <div class="section" id="section13">
+            <div class="section-title">
+                <span class="number">13</span>
+                <span class="ar">الفواتير والمطالبات المالية</span>
+                <span class="en">Invoices & Financial Claims</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">عرض الفواتير والمستحقات المالية.</span>
+                <span class="en">View invoices and financial dues.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/14 الفواتير والمطالبات المالية.png" alt="Invoices" />
+                <p class="screenshot-caption">
+                    <span class="ar">الفواتير والمطالبات المالية</span>
+                    <span class="en">Invoices & Financial Claims</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 14: Book Receipts -->
+        <div class="section" id="section14">
+            <div class="section-title">
+                <span class="number">14</span>
+                <span class="ar">استلامات الكتب</span>
+                <span class="en">Book Receipts</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">متابعة استلام الكتب الدراسية.</span>
+                <span class="en">Track textbook receipts.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/15 استلامات الكتب.png" alt="Book Receipts" />
+                <p class="screenshot-caption">
+                    <span class="ar">استلامات الكتب</span>
+                    <span class="en">Book Receipts</span>
+                </p>
+            </div>
+            <div class="screenshot">
+                <img src="screenshot/16   أنواع الكتب خارجية وكتب الوزارة -استلامات الكتب.png" alt="Book Types" />
+                <p class="screenshot-caption">
+                    <span class="ar">أنواع الكتب - كتب خارجية وكتب الوزارة</span>
+                    <span class="en">Book Types - External Books & Ministry Books</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 15: Complaints -->
+        <div class="section" id="section15">
+            <div class="section-title">
+                <span class="number">15</span>
+                <span class="ar">الشكاوى والمقترحات</span>
+                <span class="en">Complaints & Suggestions</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">تقديم ومتابعة الشكاوى والمقترحات.</span>
+                <span class="en">Submit and track complaints and suggestions.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/17 قائمة الشكاوى والمقترحات.png" alt="Complaints List" />
+                <p class="screenshot-caption">
+                    <span class="ar">قائمة الشكاوى والمقترحات</span>
+                    <span class="en">Complaints & Suggestions List</span>
+                </p>
+            </div>
+            <div class="screenshot">
+                <img src="screenshot/18 إضافة شكوى جديدة.png" alt="Add Complaint" />
+                <p class="screenshot-caption">
+                    <span class="ar">إضافة شكوى جديدة</span>
+                    <span class="en">Add New Complaint</span>
+                </p>
+            </div>
+            <div class="screenshot">
+                <img src="screenshot/19 فرز الشكاوى.png" alt="Filter Complaints" />
+                <p class="screenshot-caption">
+                    <span class="ar">فرز الشكاوى</span>
+                    <span class="en">Filter Complaints</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 16: Parent Summons -->
+        <div class="section" id="section16">
+            <div class="section-title">
+                <span class="number">16</span>
+                <span class="ar">استدعاء ولى الأمر</span>
+                <span class="en">Parent Summons</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">عرض طلبات استدعاء ولى الأمر من المدرسة.</span>
+                <span class="en">View parent summons requests from school.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/20 إستدعاء ولى الأمر.png" alt="Parent Summons" />
+                <p class="screenshot-caption">
+                    <span class="ar">استدعاء ولى الأمر</span>
+                    <span class="en">Parent Summons</span>
+                </p>
+            </div>
+            <div class="screenshot">
+                <img src="screenshot/21 تفاصيل استدعاء ولى الأمر.png" alt="Summons Details" />
+                <p class="screenshot-caption">
+                    <span class="ar">تفاصيل استدعاء ولى الأمر</span>
+                    <span class="en">Parent Summons Details</span>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <img src="digits_logo.png" alt="DigitsCode" style="height: 80px; margin-bottom: 20px;" />
+            <h4>
+                <span class="ar">تم التطوير بواسطة</span>
+                <span class="en">Developed by</span>
+            </h4>
+            <h3>Digital Integrated Transformation Solutions (DigitsCode)</h3>
+            <p><a href="https://www.digitscode.com">www.digitscode.com</a></p>
+            <p><a href="mailto:info@digitscode.com">info@digitscode.com</a></p>
+            <hr style="border-color: #444; margin: 30px 0;" />
+            <p style="opacity: 0.7;">
+                <span class="ar">© 2026 جميع الحقوق محفوظة</span>
+                <span class="en">© 2026 All Rights Reserved</span>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function switchLang(lang) {
+            const body = document.body;
+            const btnAr = document.getElementById('btn-ar');
+            const btnEn = document.getElementById('btn-en');
+
+            if (lang === 'ar') {
+                body.classList.remove('ltr');
+                body.classList.add('rtl');
+                body.setAttribute('dir', 'rtl');
+                btnAr.classList.add('active');
+                btnEn.classList.remove('active');
+            } else {
+                body.classList.remove('rtl');
+                body.classList.add('ltr');
+                body.setAttribute('dir', 'ltr');
+                btnEn.classList.add('active');
+                btnAr.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+
+</html>
