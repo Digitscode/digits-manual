@@ -4,19 +4,25 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Educational Management System - Student Manual | دليل المستخدم - بوابة الطالب</title>
+    <title>Student Manual - Educational Management System | دليل الطالب - نظام إدارة التعليم</title>
+    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
         rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
     <style>
         :root {
             --primary-color: #667eea;
             --secondary-color: #764ba2;
-            --text-color: #121212;
+            --text-color: #333;
             --text-light: #64728f;
+            --sidebar-width: 300px;
+            --header-height: 70px;
             --bg-light: #f8f9fa;
         }
 
@@ -25,299 +31,315 @@
             background-color: #f4f6f9;
             color: var(--text-color);
             margin: 0;
+            overflow-x: hidden;
         }
 
-        body.ltr {
-            direction: ltr;
-            text-align: left;
-        }
-
-        body.rtl {
-            direction: rtl;
-            text-align: right;
-        }
-
-        .header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: #fff;
-            padding: 80px 0 120px;
-            /* Extra padding at bottom for overlap */
-            text-align: center;
-            position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        }
-
-        .header h1 {
-            font-weight: 900;
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .header p {
-            font-size: 1.3rem;
-            opacity: 0.95;
-            font-weight: 500;
-        }
-
-        .header .company-name {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-top: 10px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Language Switcher - Integrated */
-        .lang-switch {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
-
-        body.ltr .lang-switch {
-            left: auto;
-            right: 20px;
-        }
-
-        .lang-switch a,
-        .manual-switch a {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 700;
-            margin: 0 5px;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            border: 1px solid transparent;
-        }
-
-        .lang-switch a:hover,
-        .manual-switch a:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .lang-switch a.active,
-        .manual-switch a.active {
+        /* --- Sidebar Navigation --- */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            /* RTL: Right side */
+            width: var(--sidebar-width);
+            height: 100vh;
             background: #fff;
-            color: var(--secondary-color);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Manual Switcher */
-        .manual-switch {
-            position: absolute;
-            top: 20px;
-            right: 20px;
+            border-left: 1px solid #eee;
+            /* LTR */
+            border-right: none;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.05);
+            /* RTL Shadow */
+            display: flex;
+            flex-direction: column;
             z-index: 1000;
+            transition: transform 0.3s ease;
         }
 
-        body.ltr .manual-switch {
+        /* LTR Adjustments */
+        body.ltr .sidebar {
             right: auto;
-            left: 20px;
+            left: 0;
+            border-right: 1px solid #eee;
+            border-left: none;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
         }
 
-        .manual-switch a.active {
-            background: rgba(255, 255, 255, 0.2);
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
             color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
-        /* Floating Banner Container */
-        .banner-container {
-            margin-top: -80px;
-            /* Negative margin to overlap header */
-            margin-bottom: 60px;
-            position: relative;
-            z-index: 10;
-            padding: 0 20px;
-        }
-
-        .banner-container img {
-            max-width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.05);
-            /* Premium shadow */
+        .sidebar-logo {
+            max-width: 150px;
+            margin-bottom: 10px;
             background: #fff;
+            padding: 10px;
+            border-radius: 8px;
         }
 
-        .toc {
+        /* Manual Switcher Tabs */
+        .manual-switcher {
+            display: flex;
+            background: #f0f2f5;
+            padding: 5px;
+            margin: 15px 15px 0 15px;
+            border-radius: 8px;
+        }
+
+        .manual-tab {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: #666;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .manual-tab.active {
             background: #fff;
-            padding: 40px;
-            border-radius: 16px;
-            margin: 30px 0;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .toc h3 {
             color: var(--secondary-color);
-            font-weight: 800;
-            margin-bottom: 25px;
-            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .manual-tab:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Navigation Links (TOC) */
+        .nav-links {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 10px 15px;
+            color: #555;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            border-right: 3px solid transparent;
+            /* RTL */
+            border-left: none;
+        }
+
+        body.ltr .nav-item {
+            border-left: 3px solid transparent;
+            border-right: none;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: rgba(118, 75, 162, 0.08);
+            /* Secondary color light */
+            color: var(--secondary-color);
+            border-right-color: var(--secondary-color);
+            /* RTL */
+        }
+
+        body.ltr .nav-item:hover,
+        body.ltr .nav-item.active {
+            border-left-color: var(--secondary-color);
+            border-right-color: transparent;
+        }
+
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+            margin-left: 8px;
+            /* RTL */
+        }
+
+        body.ltr .nav-item i {
+            margin-left: 0;
+            margin-right: 8px;
+        }
+
+        /* Sidebar Footer */
+        .sidebar-footer {
+            padding: 15px;
+            border-top: 1px solid #f0f0f0;
+            text-align: center;
+        }
+
+        .lang-btn {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            color: #333;
+            padding: 5px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin: 0 5px;
             display: inline-block;
         }
 
-        .toc h3:after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            right: 0;
-            width: 40px;
-            height: 4px;
-            background: var(--primary-color);
-            border-radius: 2px;
+        .lang-btn.active {
+            background: var(--secondary-color);
+            color: #fff;
+            border-color: var(--secondary-color);
         }
 
-        body.ltr .toc h3:after {
-            right: auto;
-            left: 0;
+        /* --- Main Content Area --- */
+        .main-content {
+            margin-right: var(--sidebar-width);
+            /* RTL */
+            margin-left: 0;
+            padding: 40px;
+            min-height: 100vh;
         }
 
-        .toc ul {
-            list-style: none;
-            padding: 0;
-            columns: 2;
+        body.ltr .main-content {
+            margin-left: var(--sidebar-width);
+            margin-right: 0;
         }
 
-        @media (max-width: 768px) {
-            .toc ul {
-                columns: 1;
-            }
+        .content-header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
         }
 
-        .toc li {
-            padding: 10px 0;
-            border-bottom: 1px dashed #eee;
-        }
-
-        .toc a {
-            color: #555;
-            text-decoration: none;
-            transition: color 0.3s, padding-right 0.3s;
-            font-weight: 500;
-            display: block;
-        }
-
-        .toc a:hover {
-            color: var(--primary-color);
-            padding-right: 5px;
-            /* Subtle movement on hover */
-        }
-
-        body.ltr .toc a:hover {
-            padding-right: 0;
-            padding-left: 5px;
+        .content-header h1 {
+            font-weight: 800;
+            color: var(--secondary-color);
         }
 
         .section {
-            padding: 60px 0;
-            border-bottom: 1px solid #eee;
             background: #fff;
-            padding-left: 30px;
-            padding-right: 30px;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
             margin-bottom: 30px;
-            border-radius: 16px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+            scroll-margin-top: 20px;
         }
 
         .section-title {
-            color: var(--secondary-color);
-            font-weight: 800;
-            font-size: 2rem;
-            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            font-weight: 700;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 10px;
         }
 
-        .section-title .number {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        .section-number {
+            background: var(--secondary-color);
             color: #fff;
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
-        }
-
-        .section-desc {
-            color: var(--text-light);
+            margin-left: 15px;
+            /* RTL */
             font-size: 1.1rem;
-            margin-bottom: 25px;
-            line-height: 1.6;
         }
 
-        .screenshot {
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .screenshot img {
-            max-width: 100%;
-            border: 8px solid #f8f9fa;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .screenshot-caption {
-            margin-top: 15px;
-            color: #888;
-            font-style: italic;
-            font-weight: 500;
-        }
-
-        .feature-list {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 12px;
-            margin: 30px 0;
-            border: 1px solid #eee;
-        }
-
-        .feature-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #e9ecef;
-            display: flex;
-            align-items: center;
-        }
-
-        .feature-list li:before {
-            content: '\f00c';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            color: #4CAF50;
-            margin-left: 10px;
-            font-size: 0.9rem;
-        }
-
-        body.ltr .feature-list li:before {
+        body.ltr .section-number {
             margin-left: 0;
-            margin-right: 10px;
+            margin-right: 15px;
         }
 
-        .feature-list li:last-child {
-            border-bottom: none;
+        .section p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
         }
 
-        .footer {
-            background: #2d2d2d;
-            color: #fff;
-            padding: 60px 0;
+        .screenshot-container {
             text-align: center;
-            margin-top: 50px;
-            border-top: 5px solid var(--primary-color);
+            margin: 20px 0;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 10px;
+            border: 1px solid #efefef;
         }
 
-        .footer a {
-            color: var(--primary-color);
+        .screenshot-container img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #ddd;
         }
 
+        .caption {
+            display: block;
+            margin-top: 10px;
+            color: #888;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 992px) {
+            :root {
+                --sidebar-width: 0px;
+            }
+
+            .sidebar {
+                transform: translateX(100%);
+                /* RTL Hidden */
+                width: 280px;
+            }
+
+            body.ltr .sidebar {
+                transform: translateX(-100%);
+                /* LTR Hidden */
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin: 0 !important;
+                padding: 20px;
+            }
+
+            .mobile-toggle {
+                display: block;
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                /* RTL */
+                z-index: 2000;
+                background: var(--secondary-color);
+                color: #fff;
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                border: none;
+                cursor: pointer;
+            }
+
+            body.ltr .mobile-toggle {
+                right: auto;
+                left: 20px;
+            }
+        }
+
+        .mobile-toggle {
+            display: none;
+        }
+
+        /* Language Classes */
         .en {
             display: none;
         }
@@ -333,438 +355,280 @@
         body.ltr .ar {
             display: none;
         }
-
-        @media print {
-
-            .lang-switch,
-            .manual-switch {
-                display: none;
-            }
-
-            .section {
-                page-break-inside: avoid;
-            }
-        }
     </style>
 </head>
 
 <body class="rtl">
 
-    <!-- Manual Switcher -->
-    <div class="manual-switch">
-        <a href="index.html"><span class="ar">دليل ولى الأمر</span><span class="en">Parent Manual</span></a>
-        <a href="student_manual.html" class="active"><span class="ar">دليل الطالب</span><span class="en">Student
-                Manual</span></a>
+    <!-- Mobile Toggle -->
+    <button class="mobile-toggle" onclick="toggleSidebar()">
+        <i class="fa fa-bars"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <!-- <img src="digits_logo.png" alt="DigitsCode" class="sidebar-logo"> -->
+            <h5 style="margin:0; font-weight:700;"><span class="ar">دليل الطالب</span><span class="en">Student
+                    Manual</span></h5>
+            <small style="opacity:0.8;">DigitsCode Education</small>
+        </div>
+
+        <!-- Level 1: Selection (Parent/Student) -->
+        <div class="manual-switcher">
+            <a href="index.html" class="manual-tab">
+                <i class="fa fa-user-friends"></i> <span class="ar">ولى الأمر</span><span class="en">Parent</span>
+            </a>
+            <a href="student_manual.html" class="manual-tab active">
+                <i class="fa fa-user-graduate"></i> <span class="ar">الطالب</span><span class="en">Student</span>
+            </a>
+        </div>
+
+        <!-- Level 2: Navigation (TOC) -->
+        <div class="nav-links">
+            <a href="#section1" class="nav-item active"><span class="number">1.</span> <span class="ar">تسجيل
+                    الدخول</span><span class="en">Login</span></a>
+            <a href="#section2" class="nav-item"><span class="number">2.</span> <span class="ar">الصفحة
+                    الرئيسية</span><span class="en">Home Page</span></a>
+            <a href="#section3" class="nav-item"><span class="number">3.</span> <span class="ar">البيانات
+                    التعليمية</span><span class="en">Educational Data</span></a>
+            <a href="#section4" class="nav-item"><span class="number">4.</span> <span class="ar">الأمور
+                    المالية</span><span class="en">Financials</span></a>
+            <a href="#section5" class="nav-item"><span class="number">5.</span> <span class="ar">الباص
+                    والأنشطة</span><span class="en">Bus & Activities</span></a>
+            <a href="#section6" class="nav-item"><span class="number">6.</span> <span class="ar">الفصل
+                    والدروس</span><span class="en">Classes & Lessons</span></a>
+            <a href="#section7" class="nav-item"><span class="number">7.</span> <span class="ar">الامتحانات
+                    والواجبات</span><span class="en">Exams & Homework</span></a>
+            <a href="#section8" class="nav-item"><span class="number">8.</span> <span class="ar">الشكاوى</span><span
+                    class="en">Complaints</span></a>
+            <a href="#section9" class="nav-item"><span class="number">9.</span> <span class="ar">الخطة
+                    الأسبوعية</span><span class="en">Weekly Plan</span></a>
+            <a href="#section10" class="nav-item"><span class="number">10.</span> <span class="ar">استلام
+                    الكتب</span><span class="en">Book Receipts</span></a>
+            <a href="#section11" class="nav-item"><span class="number">11.</span> <span class="ar">تغيير كلمة
+                    المرور</span><span class="en">Change Password</span></a>
+        </div>
+
+        <!-- Sidebar Footer (Language) -->
+        <div class="sidebar-footer">
+            <a href="#" class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية</a>
+            <a href="#" class="lang-btn" id="btn-en" onclick="switchLang('en')">English</a>
+        </div>
     </div>
 
-    <!-- Language Switch -->
-    <div class="lang-switch">
-        <a href="#" onclick="switchLang('ar')" id="btn-ar" class="active">العربية</a>
-        <a href="#" onclick="switchLang('en')" id="btn-en">English</a>
-    </div>
+    <!-- Main Content -->
+    <div class="main-content">
 
-    <!-- Header -->
-    <div class="header">
-        <div class="container">
-            <h1>
-                <span class="ar">دليل المستخدم - بوابة الطالب</span>
-                <span class="en">User Manual - Student Portal</span>
+        <div class="content-header">
+            <h1 style="display: flex; align-items: center; gap: 15px;">
+                <img src="digits_logo.png" alt="Logo" style="height: 50px;">
+                <div>
+                    <span class="ar">دليل استخدام بوابة الطالب</span>
+                    <span class="en">Student Portal User Guide</span>
+                </div>
             </h1>
+        </div>
+
+        <!-- Section 1 -->
+        <div id="section1" class="section">
+            <div class="section-title">
+                <span class="section-number">1</span>
+                <span class="ar">تسجيل الدخول</span><span class="en">Login</span>
+            </div>
             <p>
-                <span class="ar">الدليل الشامل لاستخدام بوابة الطالب التعليمية</span>
-                <span class="en">Comprehensive Guide for Student Portal Usage</span>
+                <span class="ar">تسجيل الدخول إلى حساب الطالب باستخدام البريد الإلكتروني وكلمة المرور.</span>
+                <span class="en">Log in to the student account using email and password.</span>
             </p>
-            <div class="company-name">
-                <span class="ar">Digital Integrated Transformation Solutions (DigitsCode)</span>
-                <span class="en">Digital Integrated Transformation Solutions (DigitsCode)</span>
+            <div class="screenshot-container">
+                <img src="screenshot/student/01_login.png" alt="Login">
             </div>
         </div>
-    </div>
 
-    <!-- Floating Banner -->
-    <div class="container banner-container text-center">
-        <img src="banner.png" alt="Banner" />
-    </div>
-
-    <div class="container">
-
-        <!-- Table of Contents -->
-        <div class="toc">
-            <h3>
-                <i class="fa fa-list me-2"></i>
-                <span class="ar">جدول المحتويات</span>
-                <span class="en">Table of Contents</span>
-            </h3>
-            <ul>
-                <li><a href="#section1"><span class="ar">1. تسجيل الدخول</span><span class="en">1. Login</span></a></li>
-                <li><a href="#section2"><span class="ar">2. الصفحة الرئيسية</span><span class="en">2. Home
-                            Page</span></a></li>
-                <li><a href="#section3"><span class="ar">3. البيانات الشخصية</span><span class="en">3. Personal
-                            Data</span></a></li>
-                <li><a href="#section4"><span class="ar">4. البيانات التعليمية</span><span class="en">4. Educational
-                            Data</span></a></li>
-                <li><a href="#section5"><span class="ar">5. المصروفات الدراسية</span><span class="en">5. School
-                            Fees</span></a></li>
-                <li><a href="#section6"><span class="ar">6. اشتراك الباص</span><span class="en">6. Bus
-                            Subscription</span></a></li>
-                <li><a href="#section7"><span class="ar">7. الأنشطة المدرسية</span><span class="en">7. School
-                            Activities</span></a></li>
-                <li><a href="#section8"><span class="ar">8. البيانات الطبية</span><span class="en">8. Medical
-                            Data</span></a></li>
-                <li><a href="#section9"><span class="ar">9. النتائج والتقييمات</span><span class="en">9.
-                            Results</span></a></li>
-                <li><a href="#section10"><span class="ar">10. الحضور والغياب</span><span class="en">10.
-                            Attendance</span></a></li>
-                <li><a href="#section11"><span class="ar">11. الماليات والفواتير</span><span class="en">11.
-                            Financials</span></a></li>
-                <li><a href="#section12"><span class="ar">12. المواد الدراسية</span><span class="en">12.
-                            Courses</span></a></li>
-                <li><a href="#section13"><span class="ar">13. الدروس والمحتوى</span><span class="en">13. Lessons &
-                            Content</span></a></li>
-                <li><a href="#section14"><span class="ar">14. الواجبات والاختبارات</span><span class="en">14.
-                            Assignments & Quizzes</span></a></li>
-                <li><a href="#section15"><span class="ar">15. الخطة الأسبوعية</span><span class="en">15. Weekly
-                            Plan</span></a></li>
-                <li><a href="#section16"><span class="ar">16. الشكاوى والمقترحات</span><span class="en">16.
-                            Complaints</span></a></li>
-                <li><a href="#section17"><span class="ar">17. استلامات الكتب</span><span class="en">17. Book
-                            Receipts</span></a></li>
-                <li><a href="#section18"><span class="ar">18. تغيير كلمة المرور</span><span class="en">18. Change
-                            Password</span></a></li>
-            </ul>
-        </div>
-
-        <!-- Section 1: Login -->
-        <div class="section" id="section1">
+        <!-- Section 2 -->
+        <div id="section2" class="section">
             <div class="section-title">
-                <span class="number">1</span>
-                <span class="ar">تسجيل الدخول</span>
-                <span class="en">Login</span>
+                <span class="section-number">2</span>
+                <span class="ar">الصفحة الرئيسية</span><span class="en">Home Page</span>
             </div>
-            <p class="section-desc">
-                <span class="ar">تسجيل الدخول إلى حساب الطالب.</span>
-                <span class="en">Log in to your student account.</span>
+            <p>
+                <span class="ar">نظرة عامة على الصفحة الرئيسية والوصول السريع للخدمات.</span>
+                <span class="en">Overview of the home page and quick access to services.</span>
             </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/01 تسجيل الدخول.png" alt="Login" />
+            <div class="screenshot-container">
+                <img src="screenshot/student/02_home.png" alt="Home">
             </div>
         </div>
 
-        <!-- Section 2: Home Page -->
-        <div class="section" id="section2">
+        <!-- Section 3 -->
+        <div id="section3" class="section">
             <div class="section-title">
-                <span class="number">2</span>
-                <span class="ar">الصفحة الرئيسية</span>
-                <span class="en">Home Page</span>
+                <span class="section-number">3</span>
+                <span class="ar">البيانات الشخصية والتعليمية</span><span class="en">Personal & Educational Data</span>
             </div>
-            <p class="section-desc">
-                <span class="ar">نظرة عامة على لوحة تحكم الطالب.</span>
-                <span class="en">Overview of the student dashboard.</span>
+            <p>
+                <span class="ar">عرض وتحديث البيانات الشخصية وتفاصيل المرحلة الدراسية.</span>
+                <span class="en">View and update personal data and educational stage details.</span>
             </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/02 الصفحة الرئيسية.png" alt="Home Page" />
+            <div class="screenshot-container">
+                <img src="screenshot/student/03_personal_data.png" alt="Personal Data">
+                <hr>
+                <img src="screenshot/student/04_educational_data.png" alt="Educational Data" style="margin-top: 20px;">
+                <hr>
+                <img src="screenshot/student/08_medical.png" alt="Medical Data" style="margin-top: 20px;">
             </div>
         </div>
 
-        <!-- Section 3: Personal Data -->
-        <div class="section" id="section3">
+        <!-- Section 4 -->
+        <div id="section4" class="section">
             <div class="section-title">
-                <span class="number">3</span>
-                <span class="ar">البيانات الشخصية</span>
-                <span class="en">Personal Data</span>
+                <span class="section-number">4</span>
+                <span class="ar">الأمور المالية</span><span class="en">Financials</span>
             </div>
-            <p class="section-desc">
-                <span class="ar">عرض وتحديث بياناتك الشخصية.</span>
-                <span class="en">View and update your personal information.</span>
+            <p>
+                <span class="ar">متابعة المصروفات الدراسية والفواتير المدفوعة والمستحقة.</span>
+                <span class="en">Track school fees, paid and due invoices.</span>
             </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/03 صفحة بياناتى - البيانات الشخصية.png" alt="Personal Data" />
+            <div class="screenshot-container">
+                <img src="screenshot/student/05_fees.png" alt="Fees">
+                <hr>
+                <img src="screenshot/student/11_financials.png" alt="Financial Details" style="margin-top: 20px;">
             </div>
         </div>
 
-        <!-- Section 4: Educational Data -->
-        <div class="section" id="section4">
+        <!-- Section 5 -->
+        <div id="section5" class="section">
             <div class="section-title">
-                <span class="number">4</span>
-                <span class="ar">البيانات التعليمية</span>
-                <span class="en">Educational Data</span>
+                <span class="section-number">5</span>
+                <span class="ar">الباص والأنشطة</span><span class="en">Bus & Activities</span>
             </div>
-            <p class="section-desc">
-                <span class="ar">معلومات عن المرحلة الدراسية والفصل.</span>
-                <span class="en">Information about educational stage and class.</span>
+            <p>
+                <span class="ar">تفاصيل الاشتراك في باص المدرسة والأنشطة الطلابية.</span>
+                <span class="en">Details of school bus subscription and student activities.</span>
             </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/04 صفحة بياناتى - البيانات التعليمية.png" alt="Educational Data" />
+            <div class="screenshot-container">
+                <img src="screenshot/student/06_bus.png" alt="Bus Subscription">
+                <hr>
+                <img src="screenshot/student/07_activities.png" alt="Activities" style="margin-top: 20px;">
             </div>
         </div>
 
-        <!-- Section 5: Fees -->
-        <div class="section" id="section5">
+        <!-- Section 6 -->
+        <div id="section6" class="section">
             <div class="section-title">
-                <span class="number">5</span>
-                <span class="ar">المصروفات الدراسية</span>
-                <span class="en">School Fees</span>
+                <span class="section-number">6</span>
+                <span class="ar">الفصل والدروس</span><span class="en">Classes & Lessons</span>
             </div>
-            <p class="section-desc">
-                <span class="ar">تفاصيل المصروفات الدراسية.</span>
-                <span class="en">Details of school fees.</span>
+            <p>
+                <span class="ar">الوصول إلى محتوى المواد الدراسية، الدروس المسجلة، والتفاعل معها.</span>
+                <span class="en">Access course content, recorded lessons, and interact with them.</span>
             </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/05 صفحة بياناتى - المصروفات الدراسية.png" alt="Fees" />
+            <div class="screenshot-container">
+                <img src="screenshot/student/12_course_content.png" alt="Course Content">
+                <hr>
+                <img src="screenshot/student/13_courses.png" alt="Courses List" style="margin-top: 20px;">
+                <hr>
+                <img src="screenshot/student/14_view_lesson.png" alt="View Lesson" style="margin-top: 20px;">
+                <hr>
+                <img src="screenshot/student/15_rate_lesson.png" alt="Rate Lesson" style="margin-top: 20px;">
+                <hr>
+                <img src="screenshot/student/16_comment_lesson.png" alt="Comment on Lesson" style="margin-top: 20px;">
             </div>
         </div>
 
-        <!-- Section 6: Bus -->
-        <div class="section" id="section6">
+        <!-- Section 7 -->
+        <div id="section7" class="section">
             <div class="section-title">
-                <span class="number">6</span>
-                <span class="ar">اشتركات الباص</span>
-                <span class="en">Bus Subscription</span>
+                <span class="section-number">7</span>
+                <span class="ar">الامتحانات والواجبات</span><span class="en">Exams & Homework</span>
             </div>
-            <p class="section-desc">
-                <span class="ar">بيانات اشتراك الباص وخط السير.</span>
-                <span class="en">Bus subscription and route details.</span>
+            <p>
+                <span class="ar">حل الواجبات المنزلية والاختبارات الإلكترونية ومتابعة النتائج.</span>
+                <span class="en">Solve homework and online quizzes and track results.</span>
             </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/06 صفحة بياناتى - اشتراك الباص وخط السير.png" alt="Bus" />
+            <div class="screenshot-container">
+                <img src="screenshot/student/17_quiz.png" alt="Quiz">
+                <hr>
+                <img src="screenshot/student/18_next_lesson.png" alt="Next Lesson" style="margin-top: 20px;">
+                <hr>
+                <img src="screenshot/student/09_results.png" alt="Exam Results" style="margin-top: 20px;">
             </div>
         </div>
 
-        <!-- Section 7: Activities -->
-        <div class="section" id="section7">
+        <!-- Section 8 -->
+        <div id="section8" class="section">
             <div class="section-title">
-                <span class="number">7</span>
-                <span class="ar">الأنشطة المدرسية</span>
-                <span class="en">School Activities</span>
+                <span class="section-number">8</span>
+                <span class="ar">الشكاوى والمقترحات</span><span class="en">Complaints</span>
             </div>
-            <p class="section-desc">
-                <span class="ar">الأنشطة التي تم الاشتراك بها.</span>
-                <span class="en">Subscribed school activities.</span>
+            <p>
+                <span class="ar">إرسال الشكاوى والمقترحات لإدارة المدرسة.</span>
+                <span class="en">Send complaints and suggestions to school administration.</span>
             </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/07 صفحة بياناتى - اشتراك الأنشطة المدرسية.png" alt="Activities" />
+            <div class="screenshot-container">
+                <img src="screenshot/student/19_complaints.png" alt="Complaints">
             </div>
         </div>
 
-        <!-- Section 8: Medical -->
-        <div class="section" id="section8">
+        <!-- Section 9 -->
+        <div id="section9" class="section">
             <div class="section-title">
-                <span class="number">8</span>
-                <span class="ar">البيانات الطبية</span>
-                <span class="en">Medical Data</span>
+                <span class="section-number">9</span>
+                <span class="ar">الخطة الأسبوعية</span><span class="en">Weekly Plan</span>
             </div>
-            <p class="section-desc">
-                <span class="ar">السجل الطبي للطالب.</span>
-                <span class="en">Student medical record.</span>
+            <p>
+                <span class="ar">متابعة الخطة الدراسية الأسبوعية وجدول الحضور.</span>
+                <span class="en">Track the weekly study plan and attendance schedule.</span>
             </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/08 صفحة بياناتى - البيانات الطبية.png" alt="Medical" />
+            <div class="screenshot-container">
+                <img src="screenshot/student/20_weekly_plan.png" alt="Weekly Plan">
+                <hr>
+                <img src="screenshot/student/21_filter_plan.png" alt="Filter Plan" style="margin-top: 20px;">
+                <hr>
+                <img src="screenshot/student/10_attendance.png" alt="Attendance" style="margin-top: 20px;">
             </div>
         </div>
 
-        <!-- Section 9: Results -->
-        <div class="section" id="section9">
+        <!-- Section 10 -->
+        <div id="section10" class="section">
             <div class="section-title">
-                <span class="number">9</span>
-                <span class="ar">النتائج والتقييمات</span>
-                <span class="en">Results & Evaluations</span>
+                <span class="section-number">10</span>
+                <span class="ar">استلام الكتب</span><span class="en">Book Receipts</span>
             </div>
-            <p class="section-desc">
-                <span class="ar">نتائج الاختبارات والتقييمات الشهرية.</span>
-                <span class="en">Exam results and monthly evaluations.</span>
+            <p>
+                <span class="ar">سجل الكتب المستلمة وأنواعها.</span>
+                <span class="en">Record of received books and their types.</span>
             </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/09 النتائج والتقييمات.png" alt="Results" />
+            <div class="screenshot-container">
+                <img src="screenshot/student/22_books.png" alt="Books">
+                <hr>
+                <img src="screenshot/student/23_book_types.png" alt="Book Types" style="margin-top: 20px;">
             </div>
         </div>
 
-        <!-- Section 10: Attendance -->
-        <div class="section" id="section10">
+        <!-- Section 11 -->
+        <div id="section11" class="section">
             <div class="section-title">
-                <span class="number">10</span>
-                <span class="ar">الحضور والغياب</span>
-                <span class="en">Attendance</span>
+                <span class="section-number">11</span>
+                <span class="ar">تغيير كلمة المرور</span><span class="en">Change Password</span>
             </div>
-            <p class="section-desc">
-                <span class="ar">سجل الحضور والغياب.</span>
-                <span class="en">Attendance record.</span>
+            <p>
+                <span class="ar">تأمين الحساب عن طريق تغيير كلمة المرور.</span>
+                <span class="en">Secure account by changing the password.</span>
             </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/10 الحضور والغياب وأذون الإنصراف.png" alt="Attendance" />
+            <div class="screenshot-container">
+                <img src="screenshot/student/24_change_password.png" alt="Change Password">
             </div>
         </div>
 
-        <!-- Section 11: Financials -->
-        <div class="section" id="section11">
-            <div class="section-title">
-                <span class="number">11</span>
-                <span class="ar">الماليات والفواتير</span>
-                <span class="en">Financials & Invoices</span>
-            </div>
-            <p class="section-desc">
-                <span class="ar">استعراض كافة التفاصيل المالية.</span>
-                <span class="en">Review all financial details.</span>
-            </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/11 إستعراض الماليات الخاصة بالعام الحالى أو كل الأعوام.png"
-                    alt="Financials" />
-            </div>
-        </div>
 
-        <!-- Section 12: Courses -->
-        <div class="section" id="section12">
-            <div class="section-title">
-                <span class="number">12</span>
-                <span class="ar">المواد الدراسية</span>
-                <span class="en">Courses</span>
-            </div>
-            <p class="section-desc">
-                <span class="ar">الوصول إلى المواد الدراسية والكورسات.</span>
-                <span class="en">Access to courses and subjects.</span>
-            </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/13 مواد وكورسات الطالب.png" alt="Courses" />
-            </div>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/12 دروس ومحتوى المادة أو الكورس.png" alt="Course Content" />
-            </div>
-        </div>
-
-        <!-- Section 13: Lessons -->
-        <div class="section" id="section13">
-            <div class="section-title">
-                <span class="number">13</span>
-                <span class="ar">الدروس والمحتوى</span>
-                <span class="en">Lessons & Content</span>
-            </div>
-            <p class="section-desc">
-                <span class="ar">عرض الدروس، التقييم، والتعليقات.</span>
-                <span class="en">View lessons, rates, and comments.</span>
-            </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/14 استعراض دروس مادة معينة .png" alt="View Lesson" />
-            </div>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/15 تقييم الدرس أو شرح المدرس.png" alt="Rate Lesson" />
-            </div>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/16 إضافة تعليق على الدرس.png" alt="Comment Lesson" />
-            </div>
-        </div>
-
-        <!-- Section 14: Assignments -->
-        <div class="section" id="section14">
-            <div class="section-title">
-                <span class="number">14</span>
-                <span class="ar">الواجبات والاختبارات</span>
-                <span class="en">Assignments & Quizzes</span>
-            </div>
-            <p class="section-desc">
-                <span class="ar">حل الواجبات والاختبارات على الدروس.</span>
-                <span class="en">Solve assignments and quizzes.</span>
-            </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/17 إختبار أو واجب منزلى على الدرس المنتهى.png" alt="Quiz" />
-            </div>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/18 الإنتقال للدرس التالى بعد حل الواجب.png" alt="Next Lesson" />
-            </div>
-        </div>
-
-        <!-- Section 15: Weekly Plan -->
-        <div class="section" id="section15">
-            <div class="section-title">
-                <span class="number">15</span>
-                <span class="ar">الخطة الأسبوعية</span>
-                <span class="en">Weekly Plan</span>
-            </div>
-            <p class="section-desc">
-                <span class="ar">متابعة الخطة الدراسية الأسبوعية.</span>
-                <span class="en">Track weekly study plan.</span>
-            </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/20 الخطة الأسبوعية .png" alt="Weekly Plan" />
-            </div>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/21 الخطة الأسبوعية - إمكانية الفلترة بخطة كل أسبوع.png"
-                    alt="Filter Plan" />
-            </div>
-        </div>
-
-        <!-- Section 16: Complaints -->
-        <div class="section" id="section16">
-            <div class="section-title">
-                <span class="number">16</span>
-                <span class="ar">الشكاوى والمقترحات</span>
-                <span class="en">Complaints</span>
-            </div>
-            <p class="section-desc">
-                <span class="ar">تقديم ومتابعة الشكاوى.</span>
-                <span class="en">Submit and track complaints.</span>
-            </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/19 قائمة الشكاوى والمقترحات.png" alt="Complaints" />
-            </div>
-        </div>
-
-        <!-- Section 17: Books -->
-        <div class="section" id="section17">
-            <div class="section-title">
-                <span class="number">17</span>
-                <span class="ar">استلامات الكتب</span>
-                <span class="en">Book Receipts</span>
-            </div>
-            <p class="section-desc">
-                <span class="ar">متابعة استلام الكتب الدراسية.</span>
-                <span class="en">Track book receipts.</span>
-            </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/22 استلامات الكتب.png" alt="Books" />
-            </div>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/23 أنواع الكتب خارجية وكتب الوزارة وشيتات -استلامات الكتب.png"
-                    alt="Book Types" />
-            </div>
-        </div>
-
-        <!-- Section 18: Password -->
-        <div class="section" id="section18">
-            <div class="section-title">
-                <span class="number">18</span>
-                <span class="ar">تغيير كلمة المرور</span>
-                <span class="en">Change Password</span>
-            </div>
-            <p class="section-desc">
-                <span class="ar">تحديث كلمة مرور الحساب.</span>
-                <span class="en">Update account password.</span>
-            </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب الطالب/24 تغيير كلمة المرور.png" alt="Password" />
-            </div>
+        <div style="text-align: center; margin-top: 50px; opacity: 0.7;">
+            <p>© 2026 Digital Integrated Transformation Solutions (DigitsCode)</p>
         </div>
 
     </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        <div class="container">
-            <img src="digits_logo.png" alt="DigitsCode" style="height: 80px; margin-bottom: 20px;" />
-            <h4>
-                <span class="ar">تم التطوير بواسطة</span>
-                <span class="en">Developed by</span>
-            </h4>
-            <h3>Digital Integrated Transformation Solutions (DigitsCode)</h3>
-            <p><a href="https://www.digitscode.com">www.digitscode.com</a></p>
-            <p><a href="mailto:info@digitscode.com">info@digitscode.com</a></p>
-            <hr style="border-color: #444; margin: 30px 0;" />
-            <p style="opacity: 0.7;">
-                <span class="ar">© 2026 جميع الحقوق محفوظة</span>
-                <span class="en">© 2026 All Rights Reserved</span>
-            </p>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Scripts -->
     <script>
         function switchLang(lang) {
             const body = document.body;
@@ -785,6 +649,33 @@
                 btnEn.classList.add('active');
             }
         }
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+        }
+
+        // Active spy
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href').includes(current)) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
     </script>
 </body>
 
