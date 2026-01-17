@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Educational Management System - User Manual | دليل المستخدم - نظام إدارة التعليم</title>
+    <title>Educational Management System - Student Manual | دليل المستخدم - بوابة الطالب</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
@@ -81,7 +81,8 @@
             right: 20px;
         }
 
-        .lang-switch a {
+        .lang-switch a,
+        .manual-switch a {
             text-decoration: none;
             color: rgba(255, 255, 255, 0.7);
             font-weight: 700;
@@ -93,7 +94,8 @@
             border: 1px solid transparent;
         }
 
-        .lang-switch a:hover {
+        .lang-switch a:hover,
+        .manual-switch a:hover {
             color: #fff;
             background: rgba(255, 255, 255, 0.1);
         }
@@ -116,23 +118,6 @@
         body.ltr .manual-switch {
             right: auto;
             left: 20px;
-        }
-
-        .manual-switch a {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 700;
-            margin: 0 5px;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            border: 1px solid transparent;
-        }
-
-        .manual-switch a:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.1);
         }
 
         .manual-switch a.active {
@@ -365,11 +350,11 @@
 
 <body class="rtl">
 
-    <!-- Manual Switch -->
+    <!-- Manual Switcher -->
     <div class="manual-switch">
-        <a href="index.html" class="active"><span class="ar">دليل ولى الأمر</span><span class="en">Parent
+        <a href="index.html"><span class="ar">دليل ولى الأمر</span><span class="en">Parent Manual</span></a>
+        <a href="student_manual.html" class="active"><span class="ar">دليل الطالب</span><span class="en">Student
                 Manual</span></a>
-        <a href="student_manual.html"><span class="ar">دليل الطالب</span><span class="en">Student Manual</span></a>
     </div>
 
     <!-- Language Switch -->
@@ -382,12 +367,12 @@
     <div class="header">
         <div class="container">
             <h1>
-                <span class="ar">دليل المستخدم - نظام إدارة التعليم</span>
-                <span class="en">User Manual - Educational Management System</span>
+                <span class="ar">دليل المستخدم - بوابة الطالب</span>
+                <span class="en">User Manual - Student Portal</span>
             </h1>
             <p>
-                <span class="ar">الدليل الشامل لاستخدام بوابة ولى الأمر</span>
-                <span class="en">Comprehensive Guide for Parent Portal Usage</span>
+                <span class="ar">الدليل الشامل لاستخدام بوابة الطالب التعليمية</span>
+                <span class="en">Comprehensive Guide for Student Portal Usage</span>
             </p>
             <div class="company-name">
                 <span class="ar">Digital Integrated Transformation Solutions (DigitsCode)</span>
@@ -412,7 +397,7 @@
             </h3>
             <ul>
                 <li><a href="#section1"><span class="ar">1. تسجيل الدخول</span><span class="en">1. Login</span></a></li>
-                <li><a href="#section2"><span class="ar">2. صفحة أبنائى</span><span class="en">2. My Children
+                <li><a href="#section2"><span class="ar">2. الصفحة الرئيسية</span><span class="en">2. Home
                             Page</span></a></li>
                 <li><a href="#section3"><span class="ar">3. البيانات الشخصية</span><span class="en">3. Personal
                             Data</span></a></li>
@@ -426,22 +411,26 @@
                             Activities</span></a></li>
                 <li><a href="#section8"><span class="ar">8. البيانات الطبية</span><span class="en">8. Medical
                             Data</span></a></li>
-                <li><a href="#section9"><span class="ar">9. النتائج والتقييمات</span><span class="en">9. Results &
-                            Evaluations</span></a></li>
-                <li><a href="#section10"><span class="ar">10. جدول الحصص</span><span class="en">10. Class
-                            Schedule</span></a></li>
-                <li><a href="#section11"><span class="ar">11. الخطة الأسبوعية</span><span class="en">11. Weekly
-                            Plan</span></a></li>
-                <li><a href="#section12"><span class="ar">12. الحضور والغياب</span><span class="en">12.
+                <li><a href="#section9"><span class="ar">9. النتائج والتقييمات</span><span class="en">9.
+                            Results</span></a></li>
+                <li><a href="#section10"><span class="ar">10. الحضور والغياب</span><span class="en">10.
                             Attendance</span></a></li>
-                <li><a href="#section13"><span class="ar">13. الفواتير المالية</span><span class="en">13. Financial
-                            Invoices</span></a></li>
-                <li><a href="#section14"><span class="ar">14. استلامات الكتب</span><span class="en">14. Book
-                            Receipts</span></a></li>
-                <li><a href="#section15"><span class="ar">15. الشكاوى والمقترحات</span><span class="en">15.
+                <li><a href="#section11"><span class="ar">11. الماليات والفواتير</span><span class="en">11.
+                            Financials</span></a></li>
+                <li><a href="#section12"><span class="ar">12. المواد الدراسية</span><span class="en">12.
+                            Courses</span></a></li>
+                <li><a href="#section13"><span class="ar">13. الدروس والمحتوى</span><span class="en">13. Lessons &
+                            Content</span></a></li>
+                <li><a href="#section14"><span class="ar">14. الواجبات والاختبارات</span><span class="en">14.
+                            Assignments & Quizzes</span></a></li>
+                <li><a href="#section15"><span class="ar">15. الخطة الأسبوعية</span><span class="en">15. Weekly
+                            Plan</span></a></li>
+                <li><a href="#section16"><span class="ar">16. الشكاوى والمقترحات</span><span class="en">16.
                             Complaints</span></a></li>
-                <li><a href="#section16"><span class="ar">16. استدعاء ولى الأمر</span><span class="en">16. Parent
-                            Summons</span></a></li>
+                <li><a href="#section17"><span class="ar">17. استلامات الكتب</span><span class="en">17. Book
+                            Receipts</span></a></li>
+                <li><a href="#section18"><span class="ar">18. تغيير كلمة المرور</span><span class="en">18. Change
+                            Password</span></a></li>
             </ul>
         </div>
 
@@ -453,42 +442,27 @@
                 <span class="en">Login</span>
             </div>
             <p class="section-desc">
-                <span class="ar">قم بتسجيل الدخول إلى بوابة ولى الأمر باستخدام بيانات الاعتماد الخاصة بك.</span>
-                <span class="en">Log in to the parent portal using your credentials.</span>
+                <span class="ar">تسجيل الدخول إلى حساب الطالب.</span>
+                <span class="en">Log in to your student account.</span>
             </p>
             <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/01 تسجيل الدخول.png" alt="Login Screen" />
-                <p class="screenshot-caption">
-                    <span class="ar">شاشة تسجيل الدخول</span>
-                    <span class="en">Login Screen</span>
-                </p>
+                <img src="screenshot/حساب الطالب/01 تسجيل الدخول.png" alt="Login" />
             </div>
-            <ul class="feature-list">
-                <li><span class="ar">أدخل البريد الإلكتروني أو اسم المستخدم</span><span class="en">Enter your email or
-                        username</span></li>
-                <li><span class="ar">أدخل كلمة المرور</span><span class="en">Enter your password</span></li>
-                <li><span class="ar">انقر على زر "تسجيل الدخول"</span><span class="en">Click the "Login" button</span>
-                </li>
-            </ul>
         </div>
 
-        <!-- Section 2: My Children -->
+        <!-- Section 2: Home Page -->
         <div class="section" id="section2">
             <div class="section-title">
                 <span class="number">2</span>
-                <span class="ar">صفحة أبنائى</span>
-                <span class="en">My Children Page</span>
+                <span class="ar">الصفحة الرئيسية</span>
+                <span class="en">Home Page</span>
             </div>
             <p class="section-desc">
-                <span class="ar">عرض جميع الأبناء المسجلين في المدرسة والوصول السريع لبياناتهم.</span>
-                <span class="en">View all children enrolled in the school and quick access to their information.</span>
+                <span class="ar">نظرة عامة على لوحة تحكم الطالب.</span>
+                <span class="en">Overview of the student dashboard.</span>
             </p>
             <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/02 صفحة أبنائى.png" alt="My Children Page" />
-                <p class="screenshot-caption">
-                    <span class="ar">صفحة أبنائى</span>
-                    <span class="en">My Children Page</span>
-                </p>
+                <img src="screenshot/حساب الطالب/02 الصفحة الرئيسية.png" alt="Home Page" />
             </div>
         </div>
 
@@ -496,19 +470,15 @@
         <div class="section" id="section3">
             <div class="section-title">
                 <span class="number">3</span>
-                <span class="ar">البيانات الشخصية للطالب</span>
-                <span class="en">Student Personal Data</span>
+                <span class="ar">البيانات الشخصية</span>
+                <span class="en">Personal Data</span>
             </div>
             <p class="section-desc">
-                <span class="ar">عرض وتحديث البيانات الشخصية للطالب.</span>
-                <span class="en">View and update student personal information.</span>
+                <span class="ar">عرض وتحديث بياناتك الشخصية.</span>
+                <span class="en">View and update your personal information.</span>
             </p>
             <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/03 بروفايل الطالب - البيانات الشخصية.png" alt="Personal Data" />
-                <p class="screenshot-caption">
-                    <span class="ar">بروفايل الطالب - البيانات الشخصية</span>
-                    <span class="en">Student Profile - Personal Data</span>
-                </p>
+                <img src="screenshot/حساب الطالب/03 صفحة بياناتى - البيانات الشخصية.png" alt="Personal Data" />
             </div>
         </div>
 
@@ -520,20 +490,15 @@
                 <span class="en">Educational Data</span>
             </div>
             <p class="section-desc">
-                <span class="ar">معلومات الفصل الدراسي والمرحلة التعليمية.</span>
-                <span class="en">Class and educational stage information.</span>
+                <span class="ar">معلومات عن المرحلة الدراسية والفصل.</span>
+                <span class="en">Information about educational stage and class.</span>
             </p>
             <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/04 بروفايل الطالب - البيانات التعليمية.png"
-                    alt="Educational Data" />
-                <p class="screenshot-caption">
-                    <span class="ar">بروفايل الطالب - البيانات التعليمية</span>
-                    <span class="en">Student Profile - Educational Data</span>
-                </p>
+                <img src="screenshot/حساب الطالب/04 صفحة بياناتى - البيانات التعليمية.png" alt="Educational Data" />
             </div>
         </div>
 
-        <!-- Section 5: School Fees -->
+        <!-- Section 5: Fees -->
         <div class="section" id="section5">
             <div class="section-title">
                 <span class="number">5</span>
@@ -541,61 +506,47 @@
                 <span class="en">School Fees</span>
             </div>
             <p class="section-desc">
-                <span class="ar">عرض تفاصيل المصروفات الدراسية والمدفوعات.</span>
-                <span class="en">View school fees details and payments.</span>
+                <span class="ar">تفاصيل المصروفات الدراسية.</span>
+                <span class="en">Details of school fees.</span>
             </p>
             <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/05 بروفايل الطالب - المصروفات الدراسية.png" alt="School Fees" />
-                <p class="screenshot-caption">
-                    <span class="ar">بروفايل الطالب - المصروفات الدراسية</span>
-                    <span class="en">Student Profile - School Fees</span>
-                </p>
+                <img src="screenshot/حساب الطالب/05 صفحة بياناتى - المصروفات الدراسية.png" alt="Fees" />
             </div>
         </div>
 
-        <!-- Section 6: Bus Subscription -->
+        <!-- Section 6: Bus -->
         <div class="section" id="section6">
             <div class="section-title">
                 <span class="number">6</span>
-                <span class="ar">اشتراك الباص وخط السير</span>
-                <span class="en">Bus Subscription & Route</span>
+                <span class="ar">اشتركات الباص</span>
+                <span class="en">Bus Subscription</span>
             </div>
             <p class="section-desc">
-                <span class="ar">تفاصيل اشتراك الباص المدرسي وخط السير.</span>
-                <span class="en">School bus subscription and route details.</span>
+                <span class="ar">بيانات اشتراك الباص وخط السير.</span>
+                <span class="en">Bus subscription and route details.</span>
             </p>
             <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/06 بروفايل الطالب - اشتراك الباص وخط السير.png"
-                    alt="Bus Subscription" />
-                <p class="screenshot-caption">
-                    <span class="ar">بروفايل الطالب - اشتراك الباص وخط السير</span>
-                    <span class="en">Student Profile - Bus Subscription & Route</span>
-                </p>
+                <img src="screenshot/حساب الطالب/06 صفحة بياناتى - اشتراك الباص وخط السير.png" alt="Bus" />
             </div>
         </div>
 
-        <!-- Section 7: School Activities -->
+        <!-- Section 7: Activities -->
         <div class="section" id="section7">
             <div class="section-title">
                 <span class="number">7</span>
-                <span class="ar">اشتراك الأنشطة المدرسية</span>
-                <span class="en">School Activities Subscription</span>
+                <span class="ar">الأنشطة المدرسية</span>
+                <span class="en">School Activities</span>
             </div>
             <p class="section-desc">
-                <span class="ar">عرض الأنشطة المدرسية المشترك فيها الطالب.</span>
-                <span class="en">View student's subscribed school activities.</span>
+                <span class="ar">الأنشطة التي تم الاشتراك بها.</span>
+                <span class="en">Subscribed school activities.</span>
             </p>
             <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/07 بروفايل الطالب - اشتراك الأنشطة المدرسية.png"
-                    alt="School Activities" />
-                <p class="screenshot-caption">
-                    <span class="ar">بروفايل الطالب - اشتراك الأنشطة المدرسية</span>
-                    <span class="en">Student Profile - School Activities Subscription</span>
-                </p>
+                <img src="screenshot/حساب الطالب/07 صفحة بياناتى - اشتراك الأنشطة المدرسية.png" alt="Activities" />
             </div>
         </div>
 
-        <!-- Section 8: Medical Data -->
+        <!-- Section 8: Medical -->
         <div class="section" id="section8">
             <div class="section-title">
                 <span class="number">8</span>
@@ -603,19 +554,15 @@
                 <span class="en">Medical Data</span>
             </div>
             <p class="section-desc">
-                <span class="ar">السجل الطبي للطالب والحالات الصحية.</span>
-                <span class="en">Student medical record and health conditions.</span>
+                <span class="ar">السجل الطبي للطالب.</span>
+                <span class="en">Student medical record.</span>
             </p>
             <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/08 بروفايل الطالب - البيانات الطبية.png" alt="Medical Data" />
-                <p class="screenshot-caption">
-                    <span class="ar">بروفايل الطالب - البيانات الطبية</span>
-                    <span class="en">Student Profile - Medical Data</span>
-                </p>
+                <img src="screenshot/حساب الطالب/08 صفحة بياناتى - البيانات الطبية.png" alt="Medical" />
             </div>
         </div>
 
-        <!-- Section 9: Results & Evaluations -->
+        <!-- Section 9: Results -->
         <div class="section" id="section9">
             <div class="section-title">
                 <span class="number">9</span>
@@ -623,192 +570,176 @@
                 <span class="en">Results & Evaluations</span>
             </div>
             <p class="section-desc">
-                <span class="ar">عرض نتائج الاختبارات والتقييمات الدورية.</span>
-                <span class="en">View exam results and periodic evaluations.</span>
+                <span class="ar">نتائج الاختبارات والتقييمات الشهرية.</span>
+                <span class="en">Exam results and monthly evaluations.</span>
             </p>
             <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/09 النتائج والتقييمات.png" alt="Results" />
-                <p class="screenshot-caption">
-                    <span class="ar">النتائج والتقييمات</span>
-                    <span class="en">Results & Evaluations</span>
-                </p>
+                <img src="screenshot/حساب الطالب/09 النتائج والتقييمات.png" alt="Results" />
             </div>
         </div>
 
-        <!-- Section 10: Class Schedule -->
+        <!-- Section 10: Attendance -->
         <div class="section" id="section10">
             <div class="section-title">
                 <span class="number">10</span>
-                <span class="ar">جدول الحصص</span>
-                <span class="en">Class Schedule</span>
-            </div>
-            <p class="section-desc">
-                <span class="ar">الجدول الدراسي اليومي للطالب.</span>
-                <span class="en">Student's daily class schedule.</span>
-            </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/10 جدول الحصص الأسبوعى.png" alt="Class Schedule" />
-                <p class="screenshot-caption">
-                    <span class="ar">جدول الحصص</span>
-                    <span class="en">Class Schedule</span>
-                </p>
-            </div>
-        </div>
-
-        <!-- Section 11: Weekly Plan -->
-        <div class="section" id="section11">
-            <div class="section-title">
-                <span class="number">11</span>
-                <span class="ar">الخطة الأسبوعية</span>
-                <span class="en">Weekly Plan</span>
-            </div>
-            <p class="section-desc">
-                <span class="ar">خطة الدراسة الأسبوعية والواجبات.</span>
-                <span class="en">Weekly study plan and assignments.</span>
-            </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/11 الخطة الأسبوعية.png" alt="Weekly Plan" />
-                <p class="screenshot-caption">
-                    <span class="ar">الخطة الأسبوعية</span>
-                    <span class="en">Weekly Plan</span>
-                </p>
-            </div>
-            <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/12 إمكانية اختيار الأسبوع - الخطة الأسبوعية.png"
-                    alt="Week Selection" />
-                <p class="screenshot-caption">
-                    <span class="ar">إمكانية اختيار الأسبوع</span>
-                    <span class="en">Week Selection Option</span>
-                </p>
-            </div>
-        </div>
-
-        <!-- Section 12: Attendance -->
-        <div class="section" id="section12">
-            <div class="section-title">
-                <span class="number">12</span>
                 <span class="ar">الحضور والغياب</span>
                 <span class="en">Attendance</span>
             </div>
             <p class="section-desc">
-                <span class="ar">متابعة سجل الحضور والغياب وأذون الانصراف المبكر.</span>
-                <span class="en">Track attendance records and early leave permissions.</span>
+                <span class="ar">سجل الحضور والغياب.</span>
+                <span class="en">Attendance record.</span>
             </p>
             <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/13 الحضور والغياب وأذون الإنصراف المبكر.png" alt="Attendance" />
-                <p class="screenshot-caption">
-                    <span class="ar">الحضور والغياب وأذون الإنصراف المبكر</span>
-                    <span class="en">Attendance and Early Leave Permissions</span>
-                </p>
+                <img src="screenshot/حساب الطالب/10 الحضور والغياب وأذون الإنصراف.png" alt="Attendance" />
             </div>
         </div>
 
-        <!-- Section 13: Financial Invoices -->
+        <!-- Section 11: Financials -->
+        <div class="section" id="section11">
+            <div class="section-title">
+                <span class="number">11</span>
+                <span class="ar">الماليات والفواتير</span>
+                <span class="en">Financials & Invoices</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">استعراض كافة التفاصيل المالية.</span>
+                <span class="en">Review all financial details.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/حساب الطالب/11 إستعراض الماليات الخاصة بالعام الحالى أو كل الأعوام.png"
+                    alt="Financials" />
+            </div>
+        </div>
+
+        <!-- Section 12: Courses -->
+        <div class="section" id="section12">
+            <div class="section-title">
+                <span class="number">12</span>
+                <span class="ar">المواد الدراسية</span>
+                <span class="en">Courses</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">الوصول إلى المواد الدراسية والكورسات.</span>
+                <span class="en">Access to courses and subjects.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/حساب الطالب/13 مواد وكورسات الطالب.png" alt="Courses" />
+            </div>
+            <div class="screenshot">
+                <img src="screenshot/حساب الطالب/12 دروس ومحتوى المادة أو الكورس.png" alt="Course Content" />
+            </div>
+        </div>
+
+        <!-- Section 13: Lessons -->
         <div class="section" id="section13">
             <div class="section-title">
                 <span class="number">13</span>
-                <span class="ar">الفواتير والمطالبات المالية</span>
-                <span class="en">Invoices & Financial Claims</span>
+                <span class="ar">الدروس والمحتوى</span>
+                <span class="en">Lessons & Content</span>
             </div>
             <p class="section-desc">
-                <span class="ar">عرض الفواتير والمستحقات المالية.</span>
-                <span class="en">View invoices and financial dues.</span>
+                <span class="ar">عرض الدروس، التقييم، والتعليقات.</span>
+                <span class="en">View lessons, rates, and comments.</span>
             </p>
             <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/14 الفواتير والمطالبات المالية.png" alt="Invoices" />
-                <p class="screenshot-caption">
-                    <span class="ar">الفواتير والمطالبات المالية</span>
-                    <span class="en">Invoices & Financial Claims</span>
-                </p>
+                <img src="screenshot/حساب الطالب/14 استعراض دروس مادة معينة .png" alt="View Lesson" />
+            </div>
+            <div class="screenshot">
+                <img src="screenshot/حساب الطالب/15 تقييم الدرس أو شرح المدرس.png" alt="Rate Lesson" />
+            </div>
+            <div class="screenshot">
+                <img src="screenshot/حساب الطالب/16 إضافة تعليق على الدرس.png" alt="Comment Lesson" />
             </div>
         </div>
 
-        <!-- Section 14: Book Receipts -->
+        <!-- Section 14: Assignments -->
         <div class="section" id="section14">
             <div class="section-title">
                 <span class="number">14</span>
+                <span class="ar">الواجبات والاختبارات</span>
+                <span class="en">Assignments & Quizzes</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">حل الواجبات والاختبارات على الدروس.</span>
+                <span class="en">Solve assignments and quizzes.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/حساب الطالب/17 إختبار أو واجب منزلى على الدرس المنتهى.png" alt="Quiz" />
+            </div>
+            <div class="screenshot">
+                <img src="screenshot/حساب الطالب/18 الإنتقال للدرس التالى بعد حل الواجب.png" alt="Next Lesson" />
+            </div>
+        </div>
+
+        <!-- Section 15: Weekly Plan -->
+        <div class="section" id="section15">
+            <div class="section-title">
+                <span class="number">15</span>
+                <span class="ar">الخطة الأسبوعية</span>
+                <span class="en">Weekly Plan</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">متابعة الخطة الدراسية الأسبوعية.</span>
+                <span class="en">Track weekly study plan.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/حساب الطالب/20 الخطة الأسبوعية .png" alt="Weekly Plan" />
+            </div>
+            <div class="screenshot">
+                <img src="screenshot/حساب الطالب/21 الخطة الأسبوعية - إمكانية الفلترة بخطة كل أسبوع.png"
+                    alt="Filter Plan" />
+            </div>
+        </div>
+
+        <!-- Section 16: Complaints -->
+        <div class="section" id="section16">
+            <div class="section-title">
+                <span class="number">16</span>
+                <span class="ar">الشكاوى والمقترحات</span>
+                <span class="en">Complaints</span>
+            </div>
+            <p class="section-desc">
+                <span class="ar">تقديم ومتابعة الشكاوى.</span>
+                <span class="en">Submit and track complaints.</span>
+            </p>
+            <div class="screenshot">
+                <img src="screenshot/حساب الطالب/19 قائمة الشكاوى والمقترحات.png" alt="Complaints" />
+            </div>
+        </div>
+
+        <!-- Section 17: Books -->
+        <div class="section" id="section17">
+            <div class="section-title">
+                <span class="number">17</span>
                 <span class="ar">استلامات الكتب</span>
                 <span class="en">Book Receipts</span>
             </div>
             <p class="section-desc">
                 <span class="ar">متابعة استلام الكتب الدراسية.</span>
-                <span class="en">Track textbook receipts.</span>
+                <span class="en">Track book receipts.</span>
             </p>
             <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/15 استلامات الكتب.png" alt="Book Receipts" />
-                <p class="screenshot-caption">
-                    <span class="ar">استلامات الكتب</span>
-                    <span class="en">Book Receipts</span>
-                </p>
+                <img src="screenshot/حساب الطالب/22 استلامات الكتب.png" alt="Books" />
             </div>
             <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/16 أنواع الكتب خارجية وكتب الوزارة وشيتات -استلامات الكتب.png"
+                <img src="screenshot/حساب الطالب/23 أنواع الكتب خارجية وكتب الوزارة وشيتات -استلامات الكتب.png"
                     alt="Book Types" />
-                <p class="screenshot-caption">
-                    <span class="ar">أنواع الكتب - كتب خارجية وكتب الوزارة</span>
-                    <span class="en">Book Types - External Books & Ministry Books</span>
-                </p>
             </div>
         </div>
 
-        <!-- Section 15: Complaints -->
-        <div class="section" id="section15">
+        <!-- Section 18: Password -->
+        <div class="section" id="section18">
             <div class="section-title">
-                <span class="number">15</span>
-                <span class="ar">الشكاوى والمقترحات</span>
-                <span class="en">Complaints & Suggestions</span>
+                <span class="number">18</span>
+                <span class="ar">تغيير كلمة المرور</span>
+                <span class="en">Change Password</span>
             </div>
             <p class="section-desc">
-                <span class="ar">تقديم ومتابعة الشكاوى والمقترحات.</span>
-                <span class="en">Submit and track complaints and suggestions.</span>
+                <span class="ar">تحديث كلمة مرور الحساب.</span>
+                <span class="en">Update account password.</span>
             </p>
             <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/17 قائمة الشكاوى والمقترحات.png" alt="Complaints List" />
-                <p class="screenshot-caption">
-                    <span class="ar">قائمة الشكاوى والمقترحات</span>
-                    <span class="en">Complaints & Suggestions List</span>
-                </p>
-            </div>
-            <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/18 إضافة شكوى جديدة.png" alt="Add Complaint" />
-                <p class="screenshot-caption">
-                    <span class="ar">إضافة شكوى جديدة</span>
-                    <span class="en">Add New Complaint</span>
-                </p>
-            </div>
-            <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/19 فرز الشكاوى.png" alt="Filter Complaints" />
-                <p class="screenshot-caption">
-                    <span class="ar">فرز الشكاوى</span>
-                    <span class="en">Filter Complaints</span>
-                </p>
-            </div>
-        </div>
-
-        <!-- Section 16: Parent Summons -->
-        <div class="section" id="section16">
-            <div class="section-title">
-                <span class="number">16</span>
-                <span class="ar">استدعاء ولى الأمر</span>
-                <span class="en">Parent Summons</span>
-            </div>
-            <p class="section-desc">
-                <span class="ar">عرض طلبات استدعاء ولى الأمر من المدرسة.</span>
-                <span class="en">View parent summons requests from school.</span>
-            </p>
-            <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/20 إستدعاء ولى الأمر.png" alt="Parent Summons" />
-                <p class="screenshot-caption">
-                    <span class="ar">استدعاء ولى الأمر</span>
-                    <span class="en">Parent Summons</span>
-                </p>
-            </div>
-            <div class="screenshot">
-                <img src="screenshot/حساب ولى الأمر/21 تفاصيل استدعاء ولى الأمر.png" alt="Summons Details" />
-                <p class="screenshot-caption">
-                    <span class="ar">تفاصيل استدعاء ولى الأمر</span>
-                    <span class="en">Parent Summons Details</span>
-                </p>
+                <img src="screenshot/حساب الطالب/24 تغيير كلمة المرور.png" alt="Password" />
             </div>
         </div>
 
@@ -850,8 +781,8 @@
                 body.classList.remove('rtl');
                 body.classList.add('ltr');
                 body.setAttribute('dir', 'ltr');
-                btnEn.classList.add('active');
                 btnAr.classList.remove('active');
+                btnEn.classList.add('active');
             }
         }
     </script>
